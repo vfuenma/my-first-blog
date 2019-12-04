@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Primer blog python</title>
-</head>
-<body>
-
-        <div>
-                <h1><a href="/">Django Girls Blog</a></h1>
-            </div>
-            
+    {% extends 'blog/base.html' %}
+        {% block content %}
             {% for post in posts %}
-                <div>
-                    <p> publicado: {{ post.published_date }}</p>
-                    <h2><a href="">{{ post.title }}</a></h2>
-                    <p>{{ post.text|linebreaksbr }}</p>
-                </div>
+                <div class="post">
+                    <div class="date">
+                        <p>publicado: {{ post.published_date }}</p>
+                    </div>
+                        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                            <p>{{ post.text|linebreaksbr }}</p>
+                    </div>
             {% endfor %}
+        {% endblock %}
+          
         
         
         
@@ -26,14 +18,3 @@
             </body>
     </html>
    
-
-
-
-
-
-
-
-
-
-</body>
-</html>
